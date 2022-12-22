@@ -1,0 +1,4 @@
+- Update package to modern debhelper
+- Update debian/copyright to machine-readable format
+- Move docs from pidgin-dev to libpurple-dev
+- Add a dh_finch for people who want to package plugins for it.

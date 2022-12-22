@@ -1,0 +1,4 @@
+build/doc/html usr/share/doc/pidgin-dev/
+debian/dh_pidgin usr/bin
+debian/tmp/usr/include/pidgin
+debian/tmp/usr/lib/pkgconfig/pidgin.pc

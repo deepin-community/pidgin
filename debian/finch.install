@@ -1,0 +1,4 @@
+debian/lintian-override/finch usr/share/lintian/overrides
+debian/tmp/usr/bin/finch
+debian/tmp/usr/lib/finch
+debian/tmp/usr/share/man/*/finch.*

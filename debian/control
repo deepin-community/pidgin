@@ -1,0 +1,178 @@
+Source: pidgin
+Section: net
+Priority: optional
+Maintainer: Richard Laager <rlaager@debian.org>
+Uploaders: Ari Pollak <ari@debian.org>,
+Build-Depends: ca-certificates,
+               cdbs,
+               dbus,
+               debhelper (>= 9),
+               dh-autoreconf,
+               doxygen,
+               intltool,
+               libavahi-client-dev,
+               libavahi-glib-dev,
+               libdbus-glib-1-dev,
+               libfarstream-0.2-dev,
+               libgadu-dev (>= 1:1.12.0-5),
+               libgnt-dev,
+               libgstreamer-plugins-base1.0-dev,
+               libgstreamer1.0-dev,
+               libgtk2.0-dev (>= 2.10.0),
+               libgtkspell-dev,
+               libidn11-dev,
+               libltdl3-dev,
+               libmeanwhile-dev,
+               libncursesw5-dev,
+               libnm-dev [linux-any],
+               libnss3-dev (>= 3.11.7),
+               libperl-dev,
+               libsasl2-dev,
+               libsqlite3-dev (>= 3.3),
+               libstartup-notification0-dev,
+               libxml-parser-perl,
+               libxml2-dev,
+               libxss-dev,
+               libzephyr-dev,
+               python3,
+               tcl-dev,
+               tk-dev,
+               xsltproc,
+Standards-Version: 3.9.8
+Rules-Requires-Root: binary-targets
+Vcs-Git: https://salsa.debian.org/debian/pidgin.git
+Vcs-Browser: https://salsa.debian.org/debian/pidgin
+Homepage: https://www.pidgin.im
+
+Package: libpurple0
+Section: libs
+Architecture: any
+Depends: libsasl2-modules,
+         pidgin-data (<< ${source:Upstream-Version}-z),
+         pidgin-data (>= ${source:Upstream-Version}),
+         ${misc:Depends},
+         ${perl:Depends},
+         ${shlibs:Depends},
+Recommends: ca-certificates,
+            libpurple-bin,
+Suggests: ${shlibs:Suggests},
+Description: multi-protocol instant messaging library
+ libpurple is a library intended to be used by programmers seeking
+ to write an IM client that connects to many IM networks.
+ Currently supported are:
+ AIM/ICQ, IRC, Jabber/XMPP/Google Talk, Napster, Zephyr, Gadu-Gadu,
+ Bonjour, Groupwise, Sametime, and SIMPLE.
+ .
+ Some extra packages are suggested to use increased functionality:
+  * libtcl8.6, libtk8.6:
+    - Support for writing plugins with Tcl/Tk
+
+Package: pidgin
+Architecture: any
+Depends: pidgin-data (<< ${source:Upstream-Version}-z),
+         pidgin-data (>= ${source:Upstream-Version}),
+         ${misc:Depends},
+         ${perl:Depends},
+         ${shlibs:Depends},
+Recommends: gstreamer1.0-alsa | gstreamer1.0-pulseaudio,
+            gstreamer1.0-libav,
+            gstreamer1.0-plugins-base,
+            gstreamer1.0-plugins-good,
+            sensible-utils,
+Suggests: ${shlibs:Suggests},
+Description: graphical multi-protocol instant messaging client
+ Pidgin is a graphical, modular instant messaging client capable of using
+ multiple networks at once. Currently supported are:
+ AIM/ICQ, IRC, Jabber/XMPP/Google Talk, Napster, Zephyr, Gadu-Gadu,
+ Bonjour, Groupwise, Sametime, and SIMPLE.
+ .
+ Some extra packages are suggested to use increased functionality:
+  * libsqlite3-0:
+    - To use Contact Availability Prediction plugin
+
+Package: pidgin-data
+Architecture: all
+Depends: ${misc:Depends},
+Enhances: finch,
+          libpurple0,
+          pidgin,
+Replaces: pidgin-facebookchat (<< 1.69-2),
+Breaks: pidgin-facebookchat (<< 1.69-2),
+Description: multi-protocol instant messaging client - data files
+ This package contains architecture-independent supporting data files
+ required for use with pidgin, such as documentation, icons, translations,
+ and sounds.
+
+Package: pidgin-dev
+Section: devel
+Architecture: all
+Depends: libgtk2.0-dev,
+         libpurple-dev,
+         pidgin (<< ${source:Upstream-Version}+1~),
+         pidgin (>= ${source:Upstream-Version}),
+         pkg-config,
+         ${misc:Depends},
+Suggests: doc-base,
+Description: multi-protocol instant messaging client - development files
+ This package contains the headers and other development files not included in
+ the main pidgin package. Install this if you wish to compile your own plugins.
+ .
+ If you are creating a pidgin plugin package, please be sure to read
+ /usr/share/doc/pidgin-dev/README.Debian.dev after installing pidgin-dev.
+
+Package: finch
+Architecture: any
+Depends: pidgin-data (<< ${source:Upstream-Version}-z),
+         pidgin-data (>= ${source:Upstream-Version}),
+         ${misc:Depends},
+         ${shlibs:Depends},
+Suggests: ${shlibs:Suggests},
+Description: text-based multi-protocol instant messaging client
+ Finch is a text/console-based, modular instant messaging client capable of
+ using multiple networks at once. Currently supported are:
+ AIM/ICQ, IRC, Jabber/XMPP/Google Talk, Napster, Zephyr, Gadu-Gadu,
+ Bonjour, Groupwise, Sametime, and SIMPLE.
+ .
+ Some extra packages are suggested to use increased functionality:
+  * libx11-6
+    - To use the Clipboard and/or Toaster plugins.
+
+Package: finch-dev
+Section: devel
+Architecture: all
+Depends: finch (<< ${source:Upstream-Version}+1~),
+         finch (>= ${source:Upstream-Version}),
+         libglib2.0-dev,
+         libgnt-dev,
+         libpurple-dev,
+         pkg-config,
+         ${misc:Depends},
+Description: text-based multi-protocol instant messaging client - development
+ This package contains the headers and other development files not included in
+ the main finch package. Install this if you wish to compile your own plugins.
+
+Package: libpurple-dev
+Section: libdevel
+Architecture: any
+Depends: libdbus-glib-1-dev,
+         libglib2.0-dev,
+         libpurple0 (= ${binary:Version}),
+         pkg-config,
+         ${misc:Depends},
+Description: multi-protocol instant messaging library - development files
+ This package contains the headers and other development files not included in
+ the main libpurple0 package. Install this if you wish to compile your own
+ client-agnostic plugins, or would like to compile programs that use
+ libpurple.
+
+Package: libpurple-bin
+Architecture: all
+Depends: libpurple0,
+         python3,
+         python3-dbus,
+         ${misc:Depends},
+         ${shlibs:Depends},
+Description: multi-protocol instant messaging library - extra utilities
+ This package contains the utilities not included in the main libpurple0
+ package. Currently included are: purple-remote, purple-send,
+ purple-send-async, and purple-url-handler.
